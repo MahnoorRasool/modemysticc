@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ModeMystic | Discover Fashion</title>
+    
+    <!-- Include Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      // Configure Tailwind CSS with custom theme settings (colors, fonts, animations).
+      // This allows extending the default Tailwind utility classes.
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'brand-primary': '#1a1a1a',
+              'brand-secondary': '#f0f0f0',
+              'brand-accent': '#F97316', // Changed from purple to orange
+              'brand-accent-hover': '#EA580C', // Changed from purple to darker orange
+              'brand-sale': '#ef4444', // Vibrant red for sales
+              'hero-green': '#a7f3d0', 
+              'hero-purple': '#d8b4fe',
+              'hero-brown': '#4b3c37',
+              'hero-orange': '#fbcfe8',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Lora', 'serif'],
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              gradient: {
+                '0%': { 'background-position': '0% 50%' },
+                '50%': { 'background-position': '100% 50%' },
+                '100%': { 'background-position': '0% 50%' },
+              },
+              spin: {
+                'from': { transform: 'rotate(0deg)' },
+                'to': { transform: 'rotate(360deg)' },
+              },
+            },
+            animation: {
+              fadeInUp: 'fadeInUp 0.8s ease-out forwards',
+              gradient: 'gradient 15s ease infinite',
+              'spin-slow': 'spin 10s linear infinite',
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Preconnect to Google Fonts for faster font loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Import custom fonts from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=Lora:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to custom global styles, processed by Tailwind Play CDN -->
+    <link rel="stylesheet" href="./index.css" type="text/tailwindcss">
+
+  <!-- Import Map for managing JavaScript dependencies (React, etc.) without a build step -->
+  <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@^19.1.1",
+    "react-dom/": "https://esm.sh/react-dom@^19.1.1/",
+    "react/": "https://esm.sh/react@^19.1.1/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.7.1",
+    "framer-motion": "https://esm.sh/framer-motion@^11.2.12",
+    "@google/genai": "https://esm.sh/@google/genai"
+  }
+}
+</script>
+
+<!-- Add Babel Standalone for in-browser JSX & TypeScript transpilation -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body>
+    <!-- The root element where the React application will be mounted -->
+    <div id="root"></div>
+    
+    <!-- This script tag loads and executes your React application.
+         'text/babel' tells Babel to transpile it.
+         'data-type="module"' ensures it's treated as an ES module after transpilation. -->
+    <script type="text/babel" data-type="module" src="./index.tsx"></script>
+
+    <!-- Botpress Webchat injection script -->
+    <script src="https://cdn.botpress.cloud/webchat/v3.1/inject.js"></script>
+    <script>
+      // Theming the botpress webchat to match the site's brand.
+      // We wait for the bot to be loaded before applying our custom styles.
+      if (window.botpressWebChat) {
+        window.botpressWebChat.onLoad = (bp) => {
+          bp.mergeConfig({
+            // Set the main theme color to match the site's accent color.
+            // This affects the header, and user messages for a consistent look.
+            themeColor: '#F97316', // Brand accent orange
+            
+            // Customize the bot's message bubble to also use an orange theme for consistency.
+            botConversation: {
+              bubbleStyle: {
+                backgroundColor: '#FFEDD5', // A light orange (Tailwind orange-100)
+                color: '#4B3C37', // Dark brown text for contrast
+              }
+            }
+          });
+        };
+      }
+    </script>
+    <!-- Botpress Bot configuration script -->
+    <script src="https://files.bpcontent.cloud/2025/07/24/06/20250724065917-YRL000CD.js"></script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
